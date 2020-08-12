@@ -16,7 +16,7 @@ import time
 import requests
 import six
 
-import jconfig
+from . import jconfig
 from .enums import VkUserPermissions
 from .exceptions import *
 from .utils import (
