@@ -30,23 +30,9 @@ __all__ = ['Config', 'ConfigFormatError', 'ConfigError']
 logger = logging.getLogger(__name__)
 
 
-if sys.version_info[0] < 3:
+from datetime import timezone
 
-    class timezone(datetime.tzinfo):
-        def __init__(self, td):
-            self.td = td
-
-        def utcoffset(self, dt):
-            return self.td
-
-        def dst(self, dt):  # pragma: no cover
-            return datetime.timedelta(0)
-
-
-else:
-    from datetime import timezone
-
-    basestring = str
+basestring = str
 
 __version__ = '0.5.0.post0'
 
