@@ -5,7 +5,7 @@
 
 открываем баш - консоль
 
-пишем git clone https://github.com/StepaTa/lp
+пишем git clone https://github.com/StepaTa/repeat
 
 в файлах находим файл 
 
