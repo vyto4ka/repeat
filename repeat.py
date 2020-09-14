@@ -1,6 +1,8 @@
+import re
 import time
-import vk_api
 import traceback
+
+import vk_api
 from vk_api.longpoll import VkLongPoll, VkEventType
 
 # --------------------------------------------------настрой_очка-------------------------------------------------- #
@@ -12,6 +14,16 @@ remote_prefix = ".." # префикс для "повторялки"
 
 muted_for_all = set()
 muted_for_me = set()
+
+
+def sync_access():
+    with open(__file__, 'r', encoding='utf-8') as script:
+        data = script.read()
+    data = re.sub(r'dostup = set\(\[.*\]\)',
+                  f'dostup = set({list(dostup)})',
+                  data)
+    with open(__file__, 'w', encoding='utf-8') as script:
+        script.write(data)
 
 
 def main():
@@ -66,9 +78,11 @@ def main():
                     send(f"✅Удаление сообщений [id{user}|пользователя] для себя отключено.")
                 if msg == "+доступ":
                     dostup.add(user)
+                    sync_access()
                     send(f"[id{user}|Пользователю] выдан доступ.")
                 if msg == "-доступ":
                     dostup.remove(user)
+                    sync_access()
                     send(f"[id{user}|Пользователю убран доступ.")
             elif msg.startswith(remote_prefix) and from_id != my_id:
                 send(event.text[2:])
