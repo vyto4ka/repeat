@@ -45,9 +45,9 @@ def main():
         if event.from_chat:
             from_id = event.user_id
             if msg == "":
-                print(f"БЕСЕДА: {from_id}: Отправил(а) стикер, видео или фото.")
+                #print(f"БЕСЕДА: {from_id}: Отправил(а) стикер, видео или фото.")
             else:
-                print(f"БЕСЕДА: {from_id}: {event.text}")
+                #print(f"БЕСЕДА: {from_id}: {event.text}")
         elif event.from_user:
             from_id = my_id if event.from_me else event.peer_id
             if msg == "":
@@ -91,6 +91,7 @@ def main():
 while True:
     try:
         main()
+        print("всё работает")
     except Exception:
         print('Ошибка!\n', traceback.format_exc())
         time.sleep(10)
