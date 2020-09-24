@@ -47,6 +47,7 @@ def main():
             if msg == "":
                 #print(f"БЕСЕДА: {from_id}: Отправил(а) стикер, видео или фото.")
             else:
+                pass
                 #print(f"БЕСЕДА: {from_id}: {event.text}")
         elif event.from_user:
             from_id = my_id if event.from_me else event.peer_id
